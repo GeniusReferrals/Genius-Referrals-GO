@@ -166,13 +166,13 @@ Factory for the ``` AUTHENTICATIONS ``` interface can be accessed from the packa
 authentications := authentications_pkg.NewAUTHENTICATIONS()
 ```
 
-#### <a name="get_authentications"></a>![Method: ](https://apidocs.io/img/method.png ".authentications_pkg.GetAuthentications") GetAuthentications
+#### <a name="get_authentication"></a>![Method: ](https://apidocs.io/img/method.png ".authentications_pkg.GetAuthentication") GetAuthentication
 
 > Allow clients to test authentication on Genius Referrals platform.
 
 
 ```go
-func (me *AUTHENTICATIONS_IMPL) GetAuthentications()(interface{},error)
+func (me *AUTHENTICATIONS_IMPL) GetAuthentication()(interface{},error)
 ```
 
 #### Example Usage
@@ -180,7 +180,7 @@ func (me *AUTHENTICATIONS_IMPL) GetAuthentications()(interface{},error)
 ```go
 
 var result interface{}
-result,_ = authentications.GetAuthentications()
+result,_ = authentications.GetAuthentication()
 
 ```
 
@@ -425,6 +425,277 @@ result,_ = advocates.PatchAdvocate(accountSlug, advocateToken, advocatePatchForm
 ```
 
 
+#### <a name="get_share_links"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetShareLinks") GetShareLinks
+
+> Get the advocates share links. These are the links that advocates use to share your services online.  Share links are wrapped per campaign and widget package.
+
+
+```go
+func (me *ADVOCATES_IMPL) GetShareLinks(
+            accountSlug string,
+            advocateToken string)(interface{},error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSlug |  ``` Required ```  | The account identifier |
+| advocateToken |  ``` Required ```  | The advocate's token |
+
+
+#### Example Usage
+
+```go
+accountSlug := "account_slug"
+advocateToken := "advocate_token"
+
+var result interface{}
+result,_ = advocates.GetShareLinks(accountSlug, advocateToken)
+
+```
+
+
+#### <a name="put_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.PutPaymentMethod") PutPaymentMethod
+
+> Update a payment method.
+
+
+```go
+func (me *ADVOCATES_IMPL) PutPaymentMethod(
+            accountSlug string,
+            advocateToken string,
+            advocatePaymentMethodId int64,
+            advocatePaymentMethodForm *models_pkg.PaymentMethodForm)(,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSlug |  ``` Required ```  | The advocate's token |
+| advocateToken |  ``` Required ```  | The advocate's token |
+| advocatePaymentMethodId |  ``` Required ```  | The payment method's identifier |
+| advocatePaymentMethodForm |  ``` Required ```  | The body of the request |
+
+
+#### Example Usage
+
+```go
+accountSlug := "account_slug"
+advocateToken := "advocate_token"
+advocatePaymentMethodId,_ := strconv.ParseInt("125", 10, 8)
+var advocatePaymentMethodForm *models_pkg.PaymentMethodForm
+
+var result 
+result,_ = advocates.PutPaymentMethod(accountSlug, advocateToken, advocatePaymentMethodId, advocatePaymentMethodForm)
+
+```
+
+
+#### <a name="get_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetPaymentMethod") GetPaymentMethod
+
+> Get an advocate's payment method
+
+
+```go
+func (me *ADVOCATES_IMPL) GetPaymentMethod(
+            accountSlug string,
+            advocateToken string,
+            advocatePaymentMethodId int64)(interface{},error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSlug |  ``` Required ```  | The account identifier |
+| advocateToken |  ``` Required ```  | The advocate's token |
+| advocatePaymentMethodId |  ``` Required ```  | The payment method's identifier |
+
+
+#### Example Usage
+
+```go
+accountSlug := "account_slug"
+advocateToken := "advocate_token"
+advocatePaymentMethodId,_ := strconv.ParseInt("125", 10, 8)
+
+var result interface{}
+result,_ = advocates.GetPaymentMethod(accountSlug, advocateToken, advocatePaymentMethodId)
+
+```
+
+
+#### <a name="post_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.PostPaymentMethod") PostPaymentMethod
+
+> Create a new payment method.
+
+
+```go
+func (me *ADVOCATES_IMPL) PostPaymentMethod(
+            accountSlug string,
+            advocateToken string,
+            advocatePaymentMethodForm *models_pkg.PaymentMethodForm)(interface{},error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSlug |  ``` Required ```  | The account identifier |
+| advocateToken |  ``` Required ```  | The advocate's token |
+| advocatePaymentMethodForm |  ``` Required ```  | The body of the request |
+
+
+#### Example Usage
+
+```go
+accountSlug := "account_slug"
+advocateToken := "advocate_token"
+var advocatePaymentMethodForm *models_pkg.PaymentMethodForm
+
+var result interface{}
+result,_ = advocates.PostPaymentMethod(accountSlug, advocateToken, advocatePaymentMethodForm)
+
+```
+
+
+#### <a name="get_bonus_redemption_method"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetBonusRedemptionMethod") GetBonusRedemptionMethod
+
+> Get bonuses redemption method.
+
+
+```go
+func (me *ADVOCATES_IMPL) GetBonusRedemptionMethod(bonusesRedemptionMethodSlug string)(interface{},error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| bonusesRedemptionMethodSlug |  ``` Required ```  | The bonus redemption method's identifier |
+
+
+#### Example Usage
+
+```go
+bonusesRedemptionMethodSlug := "bonuses_redemption_method_slug"
+
+var result interface{}
+result,_ = advocates.GetBonusRedemptionMethod(bonusesRedemptionMethodSlug)
+
+```
+
+
+#### <a name="get_bonus_redemption_methods"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetBonusRedemptionMethods") GetBonusRedemptionMethods
+
+> Get bonuses redemption methods.
+
+
+```go
+func (me *ADVOCATES_IMPL) GetBonusRedemptionMethods()(interface{},error)
+```
+
+#### Example Usage
+
+```go
+
+var result interface{}
+result,_ = advocates.GetBonusRedemptionMethods()
+
+```
+
+
+#### <a name="get_currencies"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetCurrencies") GetCurrencies
+
+> Get currencies.
+
+
+```go
+func (me *ADVOCATES_IMPL) GetCurrencies()(interface{},error)
+```
+
+#### Example Usage
+
+```go
+
+var result interface{}
+result,_ = advocates.GetCurrencies()
+
+```
+
+
+#### <a name="get_currency"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetCurrency") GetCurrency
+
+> Get a currency.
+
+
+```go
+func (me *ADVOCATES_IMPL) GetCurrency(code string)(interface{},error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| code |  ``` Required ```  | The currency's code |
+
+
+#### Example Usage
+
+```go
+code := "code"
+
+var result interface{}
+result,_ = advocates.GetCurrency(code)
+
+```
+
+
+#### <a name="get_payment_methods"></a>![Method: ](https://apidocs.io/img/method.png ".advocates_pkg.GetPaymentMethods") GetPaymentMethods
+
+> Get the advocate's payment methods.
+
+
+```go
+func (me *ADVOCATES_IMPL) GetPaymentMethods(
+            accountSlug string,
+            advocateToken string,
+            page *int64,
+            limit *int64,
+            filter *string,
+            sort *string)(interface{},error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSlug |  ``` Required ```  | The account identifier |
+| advocateToken |  ``` Required ```  | The advocate's token |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| filter |  ``` Optional ```  | Allowed fields: username, is_active. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
+| sort |  ``` Optional ```  | Allowed fields: username, created. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort=last_name\|first_name\|-hire_date |
+
+
+#### Example Usage
+
+```go
+accountSlug := "account_slug"
+advocateToken := "advocate_token"
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
+filter := "filter"
+sort := "sort"
+
+var result interface{}
+result,_ = advocates.GetPaymentMethods(accountSlug, advocateToken, page, limit, filter, sort)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ### <a name="accounts_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".accounts_pkg") accounts_pkg
@@ -481,8 +752,8 @@ func (me *ACCOUNTS_IMPL) GetAccounts(
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| page |  ``` Optional ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
 | filter |  ``` Optional ```  | Allowed fields: name. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
 | sort |  ``` Optional ```  | Allowed fields: name, created. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort=last_name\|first_name\|-hire_date |
 
@@ -490,8 +761,8 @@ func (me *ACCOUNTS_IMPL) GetAccounts(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("200", 10, 8)
-limit,_ := strconv.ParseInt("200", 10, 8)
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 filter := "filter"
 sort := "sort"
 
@@ -587,7 +858,7 @@ func (me *REPORTS_IMPL) GetTopAdvocates(
 |-----------|------|-------------|
 | accountSlug |  ``` Optional ```  | The account identifier |
 | campaignSlug |  ``` Optional ```  | The campaign identifier |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10) |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10) |
 | from |  ``` Optional ```  | The datetime were the range of the search starts |
 | to |  ``` Optional ```  | The datetime were the range of the search stops |
 
@@ -597,7 +868,7 @@ func (me *REPORTS_IMPL) GetTopAdvocates(
 ```go
 accountSlug := "account_slug"
 campaignSlug := "campaign_slug"
-limit,_ := strconv.ParseInt("200", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 from := time.Now()
 to := time.Now()
 
@@ -893,13 +1164,13 @@ result,_ = referrals.DeleteReferral(accountSlug, advocateToken, referralId)
 ```
 
 
-#### <a name="post_referrals"></a>![Method: ](https://apidocs.io/img/method.png ".referrals_pkg.PostReferrals") PostReferrals
+#### <a name="post_referral"></a>![Method: ](https://apidocs.io/img/method.png ".referrals_pkg.PostReferral") PostReferral
 
 > Create a new referral.
 
 
 ```go
-func (me *REFERRALS_IMPL) PostReferrals(
+func (me *REFERRALS_IMPL) PostReferral(
             accountSlug string,
             advocateToken string,
             referralForm *models_pkg.ReferralForm)(interface{},error)
@@ -922,7 +1193,7 @@ advocateToken := "advocate_token"
 var referralForm *models_pkg.ReferralForm
 
 var result interface{}
-result,_ = referrals.PostReferrals(accountSlug, advocateToken, referralForm)
+result,_ = referrals.PostReferral(accountSlug, advocateToken, referralForm)
 
 ```
 
@@ -985,8 +1256,8 @@ func (me *REFERRALS_IMPL) GetReferrals(
 |-----------|------|-------------|
 | accountSlug |  ``` Required ```  | The account identifier |
 | advocateToken |  ``` Required ```  | The advocate's token |
-| page |  ``` Optional ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
 | filter |  ``` Optional ```  | Allowed fields: url, referral_origin_slug, created. Use the following delimiters to build your filters params. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
 | sort |  ``` Optional ```  | Allowed fields: created. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort='last_name\|first_name\|-hire_date' |
 
@@ -996,8 +1267,8 @@ func (me *REFERRALS_IMPL) GetReferrals(
 ```go
 accountSlug := "account_slug"
 advocateToken := "advocate_token"
-page,_ := strconv.ParseInt("200", 10, 8)
-limit,_ := strconv.ParseInt("200", 10, 8)
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 filter := "filter"
 sort := "sort"
 
@@ -1134,7 +1405,7 @@ func (me *REDEMPTIONREQUESTS_IMPL) PatchRedemptionRequest(
 
 ```go
 accountSlug := "account_slug"
-redemptionRequestId,_ := strconv.ParseInt("200", 10, 8)
+redemptionRequestId,_ := strconv.ParseInt("125", 10, 8)
 
 var result 
 result,_ = redemptionRequests.PatchRedemptionRequest(accountSlug, redemptionRequestId)
@@ -1212,8 +1483,8 @@ result,_ = redemptionRequests.GetRedemptionRequest(accountSlug, redemptionReques
 ```go
 func (me *REDEMPTIONREQUESTS_IMPL) GetRedemptionRequests(
             accountSlug string,
-            page *string,
-            limit *string,
+            page *int64,
+            limit *int64,
             filter *string,
             sort *string)(interface{},error)
 ```
@@ -1223,8 +1494,8 @@ func (me *REDEMPTIONREQUESTS_IMPL) GetRedemptionRequests(
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | accountSlug |  ``` Required ```  | The account identifier |
-| page |  ``` Optional ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
 | filter |  ``` Optional ```  | Allowed fields: redemption_request_id, name, lastname, email, request_status_slug, request_action_slug, from, to, created. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
 | sort |  ``` Optional ```  | Allowed fields: name, lastname, email, created. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort='last_name\|first_name\|-hire_date' |
 
@@ -1233,8 +1504,8 @@ func (me *REDEMPTIONREQUESTS_IMPL) GetRedemptionRequests(
 
 ```go
 accountSlug := "account_slug"
-page := "page"
-limit := "limit"
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 filter := "filter"
 sort := "sort"
 
@@ -1275,8 +1546,8 @@ func (me *BONUSES_IMPL) GetBonuses(
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | accountSlug |  ``` Required ```  | The account identifier |
-| page |  ``` Optional ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
 | filter |  ``` Optional ```  | Allowed fields: name, lastname, email, campaign_slug, from, to, created. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
 | sort |  ``` Optional ```  | Allowed fields: name, lastname, email, created. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort='last_name\|first_name\|-hire_date' |
 
@@ -1285,8 +1556,8 @@ func (me *BONUSES_IMPL) GetBonuses(
 
 ```go
 accountSlug := "account_slug"
-page,_ := strconv.ParseInt("36", 10, 8)
-limit,_ := strconv.ParseInt("36", 10, 8)
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 filter := "filter"
 sort := "sort"
 
@@ -1296,13 +1567,13 @@ result,_ = bonuses.GetBonuses(accountSlug, page, limit, filter, sort)
 ```
 
 
-#### <a name="post_bonuses"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.PostBonuses") PostBonuses
+#### <a name="post_bonus"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.PostBonus") PostBonus
 
 > Make an attempt to give a bonus for to the advocate's referrer. The system processes the given advocate (referral) and creates a bonus for the advocate's referrer if is needed. All restrictions set on the campaigns for this account will be check out before giving the bonus to the advocate's referrer.
 
 
 ```go
-func (me *BONUSES_IMPL) PostBonuses(
+func (me *BONUSES_IMPL) PostBonus(
             accountSlug string,
             bonusesForm *models_pkg.BonusesForm)(interface{},error)
 ```
@@ -1322,18 +1593,18 @@ accountSlug := "account_slug"
 var bonusesForm *models_pkg.BonusesForm
 
 var result interface{}
-result,_ = bonuses.PostBonuses(accountSlug, bonusesForm)
+result,_ = bonuses.PostBonus(accountSlug, bonusesForm)
 
 ```
 
 
-#### <a name="get_bonuses_checkup"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.GetBonusesCheckup") GetBonusesCheckup
+#### <a name="get_bonus_checkup"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.GetBonusCheckup") GetBonusCheckup
 
 > Check if there is a bonus to be given to the advocate. Allows the clients to check if there is a bonus to be given, it simulates the behaivor of a POST request to /accounts/{account_slug}/bonuses resource. This resource is idempotent.
 
 
 ```go
-func (me *BONUSES_IMPL) GetBonusesCheckup(
+func (me *BONUSES_IMPL) GetBonusCheckup(
             accountSlug string,
             advocateToken string,
             reference string,
@@ -1356,23 +1627,23 @@ func (me *BONUSES_IMPL) GetBonusesCheckup(
 accountSlug := "account_slug"
 advocateToken := "advocate_token"
 reference := "reference"
-paymentAmount := 36.6559414736256
+paymentAmount := 217.245066297355
 
 var result []byte
-result,_ = bonuses.GetBonusesCheckup(accountSlug, advocateToken, reference, paymentAmount)
+result,_ = bonuses.GetBonusCheckup(accountSlug, advocateToken, reference, paymentAmount)
 
 ```
 
 
-#### <a name="post_bonuses_force"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.PostBonusesForce") PostBonusesForce
+#### <a name="post_force_bonus"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.PostForceBonus") PostForceBonus
 
 > Force the system to give a bonus to an advocate. The system will not take into account the restriccions specified on the campaigns.
 
 
 ```go
-func (me *BONUSES_IMPL) PostBonusesForce(
+func (me *BONUSES_IMPL) PostForceBonus(
             accountSlug string,
-            bonusForm *models_pkg.BonusesForm1)(interface{},error)
+            bonusForm *models_pkg.ForceBonusesForm)(interface{},error)
 ```
 
 #### Parameters
@@ -1387,21 +1658,21 @@ func (me *BONUSES_IMPL) PostBonusesForce(
 
 ```go
 accountSlug := "account_slug"
-var bonusForm *models_pkg.BonusesForm1
+var bonusForm *models_pkg.ForceBonusesForm
 
 var result interface{}
-result,_ = bonuses.PostBonusesForce(accountSlug, bonusForm)
+result,_ = bonuses.PostForceBonus(accountSlug, bonusForm)
 
 ```
 
 
-#### <a name="get_bonuses_trace"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.GetBonusesTrace") GetBonusesTrace
+#### <a name="get_bonus_trace"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.GetBonusTrace") GetBonusTrace
 
 > Get a bonus request trace.
 
 
 ```go
-func (me *BONUSES_IMPL) GetBonusesTrace(
+func (me *BONUSES_IMPL) GetBonusTrace(
             accountSlug string,
             traceId int64)(interface{},error)
 ```
@@ -1418,10 +1689,10 @@ func (me *BONUSES_IMPL) GetBonusesTrace(
 
 ```go
 accountSlug := "account_slug"
-traceId,_ := strconv.ParseInt("36", 10, 8)
+traceId,_ := strconv.ParseInt("217", 10, 8)
 
 var result interface{}
-result,_ = bonuses.GetBonusesTrace(accountSlug, traceId)
+result,_ = bonuses.GetBonusTrace(accountSlug, traceId)
 
 ```
 
@@ -1449,7 +1720,7 @@ func (me *BONUSES_IMPL) DeleteBonus(
 
 ```go
 accountSlug := "account_slug"
-bonusId,_ := strconv.ParseInt("36", 10, 8)
+bonusId,_ := strconv.ParseInt("217", 10, 8)
 
 var result 
 result,_ = bonuses.DeleteBonus(accountSlug, bonusId)
@@ -1480,7 +1751,7 @@ func (me *BONUSES_IMPL) GetBonus(
 
 ```go
 accountSlug := "account_slug"
-bonusId,_ := strconv.ParseInt("36", 10, 8)
+bonusId,_ := strconv.ParseInt("217", 10, 8)
 
 var result interface{}
 result,_ = bonuses.GetBonus(accountSlug, bonusId)
@@ -1488,13 +1759,13 @@ result,_ = bonuses.GetBonus(accountSlug, bonusId)
 ```
 
 
-#### <a name="get_bonuses_traces"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.GetBonusesTraces") GetBonusesTraces
+#### <a name="get_bonus_traces"></a>![Method: ](https://apidocs.io/img/method.png ".bonuses_pkg.GetBonusTraces") GetBonusTraces
 
 > Get the list of bonuses traces (audit trail). Every time the system tries to give a bonus the an advocate a new trace is created.
 
 
 ```go
-func (me *BONUSES_IMPL) GetBonusesTraces(
+func (me *BONUSES_IMPL) GetBonusTraces(
             accountSlug string,
             page *int64,
             limit *int64,
@@ -1507,8 +1778,8 @@ func (me *BONUSES_IMPL) GetBonusesTraces(
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | accountSlug |  ``` Required ```  | The account identifier |
-| page |  ``` Optional ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
 | filter |  ``` Optional ```  | Allowed fields: reference, result, bonus_amount, advocate_token, advocate_referrer_token, campaign_slug, from, to, created. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
 | sort |  ``` Optional ```  | Allowed fields: created. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort='last_name\|first_name\|-hire_date' |
 
@@ -1517,13 +1788,13 @@ func (me *BONUSES_IMPL) GetBonusesTraces(
 
 ```go
 accountSlug := "account_slug"
-page,_ := strconv.ParseInt("36", 10, 8)
-limit,_ := strconv.ParseInt("36", 10, 8)
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 filter := "filter"
 sort := "sort"
 
 var result interface{}
-result,_ = bonuses.GetBonusesTraces(accountSlug, page, limit, filter, sort)
+result,_ = bonuses.GetBonusTraces(accountSlug, page, limit, filter, sort)
 
 ```
 
@@ -1590,8 +1861,8 @@ func (me *CAMPAIGNS_IMPL) GetCampaigns(
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | accountSlug |  ``` Required ```  | The account identifier |
-| page |  ``` Optional ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
-| limit |  ``` Optional ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page number, e.g. 1 would start at the first result, and 10 would start at the tenth result. |
+| limit |  ``` Optional ```  ``` DefaultValue ```  | Maximum number of results to return in the response. Default (10), threshold (100) |
 | filter |  ``` Optional ```  | Allowed fields: name, description, start_date, end_date, is_active (true\|false), created. Use the following delimiters to build your filters params. The vertical bar ('\|') to separate individual filter phrases and a double colon ('::') to separate the names and values. The delimiter of the double colon (':') separates the property name from the comparison value, enabling the comparison value to contain spaces. Example: www.example.com/users?filter='name::todd\|city::denver\|title::grand poobah' |
 | sort |  ``` Optional ```  | Allowed fields: campaign_slug, created, start_date, end_date, is_active. Use sort query-string parameter that contains a delimited set of property names. For each property name, sort in ascending order, and for each property prefixed with a dash ('-') sort in descending order. Separate each property name with a vertical bar ('\|'), which is consistent with the separation of the name\|value pairs in filtering, above. For example, if we want to retrieve users in order of their last name (ascending), first name (ascending) and hire date (descending), the request might look like this www.example.com/users?sort='last_name\|first_name\|-hire_date' |
 
@@ -1600,8 +1871,8 @@ func (me *CAMPAIGNS_IMPL) GetCampaigns(
 
 ```go
 accountSlug := "account_slug"
-page,_ := strconv.ParseInt("36", 10, 8)
-limit,_ := strconv.ParseInt("36", 10, 8)
+page,_ := strconv.ParseInt("1", 10, 8)
+limit,_ := strconv.ParseInt("10", 10, 8)
 filter := "filter"
 sort := "sort"
 
