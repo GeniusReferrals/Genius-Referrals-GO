@@ -1,0 +1,14 @@
+services:
+  sdk:
+    build: .
+    volumes:
+      - ./:/sdk
+      - go-cache:/go/pkg
+    user: "1001:1001"
+    environment:
+      - GOFLAGS=-buildvcs=false
+      - GOCACHE=/tmp/go-build
+      - GOPATH=/go
+    working_dir: /sdk
+volumes:
+  go-cache:
